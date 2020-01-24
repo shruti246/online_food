@@ -1,16 +1,38 @@
 <?php
-$server="localhost";
-$uname="root";
-$password="shruti";
-$dbname="food";
-  $con=mysqli_connect($server,$uname,$password,$dbname);
-  if($con){
-
- // echo "connect";
- }else{
-     echo "not connect";
- }
+include("connection.php");
+session_start();
+if($_SESSION["name"]){
+  echo"ADMIN NAME: ".$_SESSION["name"];
+ 
+}else{
+  header("location:admin.php");
+}
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+h1{
+    font-size:40px;
+}
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 15px;
+}
+</style>
+</head>
+<h1>Product List</h1>
 <table border=1>
 <tr>
 <th>id</th>
@@ -19,7 +41,7 @@ $dbname="food";
 <th>discount_price</th>
 <th>decription</th>
 <th>image</th>
-<th>ACTION</th>
+
 </tr>
  <?php
  $query="select* from product";
@@ -37,9 +59,8 @@ echo"
 <td>".$result['discount_price']."</td>
 <td>".$result['decription']."</td>
 <td>".$result['image']."</td>
-<td><a href='edit_product.php?id=".$result['id']."'>EDIT</a> </td>
-<td><a href='delete_product.php?id=".$result['id']."'>DELETE</a> </td>
-
+<td><a href='edit_product.php?id=$id'>EDIT</td>
+<td><a href='delete_product.php?id=$id'>Delete</td>
 </tr>";
 
 }

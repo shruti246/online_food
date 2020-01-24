@@ -1,6 +1,38 @@
 <?php
 include("connection.php");
+session_start();
+if($_SESSION["name"]=="")
+{
+    header('location:admin.php'); 
+}else {
+          echo "ADMIN NAME:".$_SESSION["name"];
+}
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+h1{
+    font-size:40px;
+}
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 15px;
+}
+</style>
+</head>
+<h1>Product List</h1>
 <table border=1>
 <tr>
 <th>id</th>
@@ -9,10 +41,10 @@ include("connection.php");
 <th>discount_price</th>
 <th>decription</th>
 <th>image</th>
-<th>ACTION</th>
+
 </tr>
  <?php
- $query="select* from category";
+ $query="select* from product";
 $row=mysqli_query($con,$query);
 //$result=mysqli_fetch_assoc($row);
 //print_r($result);
@@ -27,8 +59,6 @@ echo"
 <td>".$result['discount_price']."</td>
 <td>".$result['decription']."</td>
 <td>".$result['image']."</td>
-<td><a href='edit_product.php?id=".$result['id']."'>EDIT</a> </td>
-<td><a href='delete_product.php?id=".$result['id']."'>DELETE</a> </td>
 
 </tr>";
 

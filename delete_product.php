@@ -1,22 +1,17 @@
 <?php
 $id=$_REQUEST['id'];
 //echo $id;
-$server="localhost";
-$uname="root";
-$password="shruti";
-$dbname="food";
-  $con=mysqli_connect($server,$uname,$password,$dbname);
-  if($con){
 
- // echo "connect";
- }else{
-     echo "not connect";
- }
+
+
+include("connection.php");
+
+
  $query="delete from product where id=$id";
  //echo $query;
  $result=mysqli_query($con,$query);
  if($result){
-   header("location:product_dashboard.php");
+   header("location:product_edit_delete.php");
  }else{
      echo"not ok";
  }

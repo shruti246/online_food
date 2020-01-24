@@ -1,11 +1,11 @@
 <?php
 $server="localhost";
-$uname="root";
-$pword="shruti";
-$dbname="food";
+$uname="webnjwej_shruti";
+$pword="shruti@12345";
+$dbname="webnjwej_shr_food";
 $con=mysqli_connect($server,$uname,$pword,$dbname);
 if($con){
-    echo"connect";
+  //echo"connect";
 }else{
     echo"not connect";
 }

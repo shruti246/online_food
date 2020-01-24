@@ -1,23 +1,24 @@
 <?php
-$server="localhost";
-$user="root";
-$passw="shruti";
-$dbname="food";
-$con=mysqli_connect($server,$user,$passw,$dbname);
-
-if($con){
-	echo"success";
-}else{
-	echo"unsucces";
-
-}
+include("connection.php");
+?>
+<?php
+session_start();
 if(isset($_POST['submit'])){
 	//echo"dhf";exit;
 	$email=$_POST['email'];
 	//echo $email;
 	$pass=$_POST['pass'];
-	echo $pass;
-//$query="select *FROM registration "
+	//echo $pass;
+$query="select * FROM registration  where email='$email' AND password='$pass' ";
+$result=mysqli_query($con,$query);
+$row=mysqli_fetch_assoc($result);
+if($row){
+	$_SESSION["name"]=$row['name'];
+	echo "welcome ".$_SESSION["name"];
+}else{
+	echo "not ok";
+}
+
 }
 
 
@@ -98,7 +99,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="login-section">
 					<ul>
-						<li><a href="login.php">Login</a>  </li> |
+						<li> <?php
+						if($_SESSION['name']){
+							 echo "welcome ".$_SESSION["name"];
+						}else{
+							?>
+							<a href="login.php"> Login     </a>  </li> |
+						<?php	
+						} 
+						?>
 						<li><a href="register.php">Register</a> </li> |
 						<li><a href="#">Help</a></li>
 						<div class="clearfix"></div>

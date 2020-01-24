@@ -1,18 +1,7 @@
 <?php
-$id=$_POST['id'];
-echo $id;
-$server="localhost";
-$user="root";
-$password="shruti";
-$dbname="food";
-$con=mysqli_connect($server,$user,$password,$dbname);
-if($con){
-
-   // echo"success";
-}else{
-
-    echo"fail";
-}
+include("connection.php");
+?>
+<?php
 if(isset($_POST['edit'])){
     
 $name=$_POST['name'];

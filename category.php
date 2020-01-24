@@ -1,16 +1,7 @@
 <?php
-$server="localhost";
-$username="root";
-$password="shruti";
-$dbname="food";
-
-$con=mysqli_connect($server,$username,$password,$dbname);
-if($con){
-
-   // echo "connect";
-}else{
-    echo "not connect";
-}
+include("connection.php");
+?>
+<?php
 if(isset($_POST['submit'])){
 
     $name=$_POST['name'];

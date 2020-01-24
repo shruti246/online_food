@@ -1,3 +1,12 @@
+<?php
+session_start();
+require_once("connection.php");
+$query="select * from product";
+$result=mysqli_query($con,$query);
+
+//print_r($row);
+?>
+
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -73,8 +82,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="login-section">
 					<ul>
-						<li><a href="login.php">Login</a>  </li> |
+					<li><a href="admin.php">ADMIN Login</a>  </li> |
+					<?php
+						if($_SESSION['name']){
+							 echo "<b> welcome ".$_SESSION["name"]."</b>";
+						}else{
+							?>
+							<a href="login.php"> Login     </a>  </li> |
+						<?php	
+						} 
+						?>
+					
 						<li><a href="register.php">Register</a> </li> |
+						<li><a href="log_out.php">Log Out</a> </li> |
 						<li><a href="#">Help</a></li>
 						<div class="clearfix"></div>
 					</ul>
@@ -187,64 +207,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				 <div class="m_3"><span class="middle-dotted-line"> </span> </div>
 				   <div class="container">
 					  <ul id="flexiselDemo3">
+					  <?php
+							  while($row=mysqli_fetch_assoc($result)){
+								?>
+
 						<li>
 							<div class="offer">
 								<div class="offer-image">	
-									<img src="images/p1.jpg" class="img-responsive" alt=""/>
+									<img src="products/<?php echo $row['image'] ?>" class="img-responsive" alt=""/>
 								</div>
 								<div class="offer-text">
-									<h4>Olister Combo pack lorem</h4>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+									<h4><?php echo $row['name'] ?></h4>
+									<p><?php echo $row['decription'] ?> </p>
 									<input type="button" value="Grab It">
 									<span></span>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 						</li>
-						<li>
-							<div class="offer">
-								<div class="offer-image">	
-									<img src="images/p2.jpg" class="img-responsive" alt=""/>
-								</div>
-								<div class="offer-text">
-									<h4>Chicken Jumbo pack lorem</h4>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-									<input type="button" value="Grab It">
-									<span></span>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</li>
-						<li>
-							<div class="offer">
-								<div class="offer-image">	
-									<img src="images/p1.jpg" class="img-responsive" alt=""/>
-								</div>
-								<div class="offer-text">
-									<h4>Crab Combo pack lorem</h4>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-									<input type="button" value="Grab It">
-									<span></span>
-								</div>
+
+						<?php
+							  }
+								?> 
+
 								
-								<div class="clearfix"></div>
-								</div>
-						</li>
-						<li>
-							<div class="offer">
-								<div class="offer-image">	
-									<img src="images/p2.jpg" class="img-responsive" alt=""/>
-								</div>
-								<div class="offer-text">
-									<h4>Chicken Jumbo pack lorem</h4>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-									<input type="button" value="Grab It">
-									<span></span>
-								</div>
-								
-								<div class="clearfix"></div>
-								</div>
-					    </li>
 					 </ul>
 				 <script type="text/javascript">
 					$(window).load(function() {

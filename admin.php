@@ -1,7 +1,38 @@
 <?php
+require_once("connection.php");
+session_start();
+if(isset($_POST['submit'])){
+//echo "h";exit;
+$email=$_POST['email'];
+//echo $email;
+$password=$_POST['password'];
+//echo $password;
+}
+$result=mysqli_query($con,"select * from admin_login where email='$email' and password='$password'");
+//$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+$row=mysqli_fetch_assoc($result);
+if($row){
+  
+      $_SESSION["name"]=$row['name'];
+   //echo $_SESSION["name"];
+  header('Location: admin_dashboard.php');
+}
+else {
+  // header('Location:admin.php');
+    //echo "fail";
+   }
 
+   $cookie_name="localhost";
+   $cookie_value=$row['email'];
+   setcookie($cookie_name,$cookie_value,time() + (86400 * 30), "/");
+ //  echo  $cookies_name;exit;
 
-include("admin1.php");
+if(!isset($_COOKIE[$cookie_name])) {
+  echo "Cookie named '" . $cookie_name . "' is not set!";
+} else {
+  echo "Cookie '" . $cookie_name . "' is set!<br>";
+  echo "Value is: " . $_COOKIE[$cookie_name];
+}
 
 ?>
 

@@ -1,19 +1,10 @@
 <?php
+include("connection.php");
 
-
-$server="localhost";
-$username="root";
-$password="shruti";
-$dbname="food";
-
-$con=mysqli_connect($server,$username,$password,$dbname);
-if($con){
-
-   // echo "connect";
-}else{
-    echo "not connect";
+session_start();
+if($_SESSION["name"]==""){
+    header('location:admin.php');
 }
-
 
 
 if(isset($_POST['submit'])){
@@ -50,7 +41,7 @@ $result= mysqli_query($con, $query);
 
                }else{
 
-                echo"unsuccss";
+              //  echo"unsuccss";
                }
 ?>
 

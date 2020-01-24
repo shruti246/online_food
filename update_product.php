@@ -1,16 +1,7 @@
 <?php
-$server="localhost";
-$user="root";
-$pass="shruti";
-$dbname="food";
-$con=mysqli_connect($server,$user,$pass,$dbname);
-if($con){
-    echo"conect";
-}
-else{
-    echo"fail";
-}
-
+include("connection.php");
+?>
+<?php
  $id=$_REQUEST['id'];
 //echo $id;
 if(isset($_POST['submit'])){
@@ -21,13 +12,13 @@ if(isset($_POST['submit'])){
     $decription=$_POST['decription'];
     $imageQuery = "";
      // CHECK FILE 
-     print_r($_FILES);
+     //print_r($_FILES);
      if(isset($_FILES)){
         $target_file  = "products/".$_FILES["file"]["name"];
         $image=$_FILES["file"]["name"];
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
             $imageQuery = " , image = '$image'";
-            echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
@@ -36,7 +27,12 @@ if(isset($_POST['submit'])){
   
     
 }
-echo $query="UPDATE product SET name='$name',actual_price=' $actual_price',discount_price=' $dicaunt_price', decription=' $decription' $imageQuery  WHERE id=$id";
+ $query="UPDATE product SET name='$name',actual_price=' $actual_price',discount_price=' $dicaunt_price', decription=' $decription' $imageQuery  WHERE id=$id";
  
- $res = mysqli_query($con, $query);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    echo $query;
+ $res = mysqli_query($con, $query);    
+ if($res){
+    echo"update successfully";
+ } else{
+     echo"not update";
+ }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               echo $query;
 ?>
