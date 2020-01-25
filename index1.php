@@ -48,10 +48,57 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
     <!-- header-section-starts -->
-	<?php
-	include("header.php");
-	?>
-	
+	<div class="header">
+		<div class="container">
+			<div class="top-header">
+				<div class="logo">
+					<a href="index.php"><img src="images/logo.png" class="img-responsive" alt="" /></a>
+				</div>
+				<div class="queries">
+					<p>Questions? Call us Toll-free!<span>1800-0000-7777 </span><label>(11AM to 11PM)</label></p>
+				</div>
+				<div class="header-right">
+						<div class="cart box_1">
+							<a href="checkout.php">
+								<h3> <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> items)<img src="images/bag.png" alt=""></h3>
+							</a>	
+							<p><a href="javascript:;" class="simpleCart_empty">Empty card</a></p>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+			<div class="menu-bar">
+			<div class="container">
+				<div class="top-menu">
+					<ul>
+						<li class="active"><a href="#Home" class="scroll">Home</a></li>|
+						<li><a href="restaurants.php">Popular Restaurants</a></li>|
+						<li><a href="order.php">Order</a></li>|
+						<li><a href="contact.php">contact</a></li>
+						<div class="clearfix"></div>
+					</ul>
+				</div>
+				<div class="login-section">
+					<ul>
+					<li><a href="admin.php">ADMIN Login</a>  </li> |
+					<?php
+						if($_SESSION['name']){
+							 echo "<b> welcome ".$_SESSION["name"]."</b>";
+						}else{
+							?>
+							<a href="login.php"> Login     </a>  </li> |
+						<?php	
+						} 
+						?>
+					
+						<li><a href="register.php">Register</a> </li> |
+						<li><a href="log_out.php">Log Out</a> </li> |
+						<li><a href="#">Help</a></li>
+						<div class="clearfix"></div>
+					</ul>
+				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>

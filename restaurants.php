@@ -1,3 +1,12 @@
+<?php
+require_once("connection.php");
+$query="select * from category";
+$result=mysqli_query($con,$query);
+
+// print_r($row);
+?>
+
+
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -37,172 +46,46 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</script>		
 <script src="js/simpleCart.min.js"> </script>	
 </head>
-<body>
-    <!-- header-section-starts -->
-	<div class="header">
-		<div class="container">
-			<div class="top-header">
-				<div class="logo">
-					<a href="index.php"><img src="images/logo.png" class="img-responsive" alt="" /></a>
-				</div>
-				<div class="queries">
-					<p>Questions? Call us Toll-free!<span>1800-0000-7777 </span><label>(11AM to 11PM)</label></p>
-				</div>
-				<div class="header-right">
-						<div class="cart box_1">
-							<a href="checkout.php">
-								<h3> <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> items)<img src="images/bag.png" alt=""></h3>
-							</a>	
-							<p><a href="javascript:;" class="simpleCart_empty">Empty card</a></p>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-			<div class="menu-bar">
-			<div class="container">
-				<div class="top-menu">
-					<ul>
-						<li><a href="index.php">Home</a></li>|
-						<li class="active"><a href="restaurants.php">Popular Restaurants</a></li>|
-						<li><a href="order.php">Order</a></li>|
-						<li><a href="contact.php">contact</a></li>
-						<div class="clearfix"></div>
-					</ul>
-				</div>
-				<div class="login-section">
-					<ul>
-						<li><a href="login.php">Login</a>  </li> |
-						<li><a href="register.php">Register</a> </li> |
-						<li><a href="#">Help</a></li>
-						<div class="clearfix"></div>
-					</ul>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>		
-				</div>
-
-
+<?php
+include("header.php");
+?>
 	<!-- header-section-ends -->
 	<!-- content-section-starts -->
+	<hr>
+	<br><br>
 	<div class="Popular-Restaurants-content">
 		<div class="Popular-Restaurants-grids">
 			<div class="container">
+			<?php
+				while($row=mysqli_fetch_assoc($result)){
+
+				
+				?>
 				<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">
 					<div class="col-md-3 restaurent-logo">
-						<img src="images/restaurent-logo1.jpg" class="img-responsive" alt="" />
+						<img src="products/<?php echo $row['image'] ?>" class="img-responsive" alt="" />
 					</div>
 					<div class="col-md-2 restaurent-title">
 						<div class="logo-title">
-							<h4><a href="#">pizza hut</a></h4>
+						<h4><?php echo $row['name'] ?></h4>
 						</div>
 						<div class="rating">
 							<span>ratings</span>
 							<a href="#"> <img src="images/star1.png" class="img-responsive" alt="">(004)</a>
 						</div>
-					</div>
+					  </div>
 					<div class="col-md-7 buy">
 						<span>$45</span>
 						<a class="morebtn hvr-rectangle-in" href="orders-list.php">buy</a>
 					</div>
 					<div class="clearfix"></div>
-				</div>
-				<div class="Popular-Restaurants-grid wow fadeInLeft" data-wow-delay="0.4s">
-					<div class="col-md-3 restaurent-logo">
-						<img src="images/restaurent-logo2.jpg" class="img-responsive" alt="" />
-					</div>
-					<div class="col-md-2 restaurent-title">
-						<div class="logo-title logo-title-1">
-							<h4><a href="#">Subway</a></h4>
-						</div>
-						<div class="rating">
-							<span>ratings</span>
-							<a href="#"> <img src="images/star2.png" class="img-responsive" alt="">(005)</a>
-						</div>
-					</div>
-					<div class="col-md-7 buy">
-						<span>$45</span>
-						<a class="morebtn hvr-rectangle-in" href="orders-list.php">buy</a>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">
-					<div class="col-md-3 restaurent-logo">
-						<img src="images/restaurent-logo3.jpg" class="img-responsive" alt="" />
-					</div>
-					<div class="col-md-2 restaurent-title">
-						<div class="logo-title logo-title-2">
-							<h4><a href="#">Barista</a></h4>
-						</div>
-						<div class="rating">
-							<span>ratings</span>
-							<a href="#"> <img src="images/star1.png" class="img-responsive" alt="">(004)</a>
-						</div>
-					</div>
-					<div class="col-md-7 buy">
-						<span>$45</span>
-						<a class="morebtn hvr-rectangle-in" href="orders-list.php">buy</a>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="Popular-Restaurants-grid wow fadeInLeft" data-wow-delay="0.4s">
-					<div class="col-md-3 restaurent-logo">
-						<img src="images/restaurent-logo4.jpg" class="img-responsive" alt="" />
-					</div>
-					<div class="col-md-2 restaurent-title">
-						<div class="logo-title logo-title-3">
-							<h4><a href="#">papa johns</a></h4>
-						</div>
-						<div class="rating">
-							<span>ratings</span>
-							<a href="#"> <img src="images/star2.png" class="img-responsive" alt="">(005)</a>
-						</div>
-					</div>
-					<div class="col-md-7 buy">
-						<span>$45</span>
-						<a class="morebtn hvr-rectangle-in" href="orders-list.php">buy</a>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">
-					<div class="col-md-3 restaurent-logo">
-						<img src="images/restaurent-logo5.jpg" class="img-responsive" alt="" />
-					</div>
-					<div class="col-md-2 restaurent-title">
-						<div class="logo-title logo-title-4">
-							<h4><a href="#">Domino's pizza</a></h4>
-						</div>
-						<div class="rating">
-							<span>ratings</span>
-							<a href="#"> <img src="images/star1.png" class="img-responsive" alt="">(004)</a>
-						</div>
-					</div>
-					<div class="col-md-7 buy">
-						<span>$45</span>
-						<a class="morebtn hvr-rectangle-in" href="orders-list.php">buy</a>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="Popular-Restaurants-grid wow fadeInLeft" data-wow-delay="0.4s">
-					<div class="col-md-3 restaurent-logo">
-						<img src="images/restaurent-logo6.jpg" class="img-responsive" alt="" />
-					</div>
-					<div class="col-md-2 restaurent-title">
-						<div class="logo-title logo-title-5">
-							<h4><a href="#">kfc</a></h4>
-						</div>
-						<div class="rating">
-							<span>ratings</span>
-							<a href="#"> <img src="images/star2.png" class="img-responsive" alt="">(005)</a>
-						</div>
-					</div>
-					<div class="col-md-7 buy">
-						<span>$45</span>
-						<a class="morebtn hvr-rectangle-in" href="orders-list.php">buy</a>
-					</div>
-					<div class="clearfix"></div>
+				   </div>
+					<?php
+				      }
+					?>
+				
+					
+				
 				</div>
 			</div>
 		</div>

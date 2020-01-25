@@ -40,7 +40,7 @@ if($_SESSION["name"]==""){
     <div class="container">
     <div class="row">
     <div class="col-sm-3">
-    <a href="user_register1.php">
+    <a href="register_user.php">
     <p class="a">USER </p></a>
     </div>
     <div class="col-sm-3">
